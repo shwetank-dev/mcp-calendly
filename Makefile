@@ -1,6 +1,5 @@
 # MCPB bundle configuration
 BUNDLE_NAME = mcp-calendly
-VERSION ?= 0.1.0
 
 .PHONY: help install build format format-check lint typecheck test clean run check all bump bundle
 

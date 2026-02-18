@@ -1,0 +1,367 @@
+Scanning nimblebraininc-calendly-0.1.0-darwin-arm64.mcpb...
+{
+  "version": "1.0.0",
+  "bundle": {
+    "name": "@nimblebraininc/calendly",
+    "version": "0.1.0",
+    "hash": "sha256:e2ba5a692855efdecbf4f141c55741596d28528197d33ed389bd336161e8f857"
+  },
+  "scan": {
+    "timestamp": "2026-02-18T23:52:28.675896+00:00",
+    "scanner": "mpak-scanner",
+    "scanner_version": "0.2.4",
+    "duration_ms": 1518
+  },
+  "compliance": {
+    "level": 0,
+    "level_name": "None",
+    "controls_passed": 12,
+    "controls_failed": 0,
+    "controls_total": 16
+  },
+  "risk_score": "LOW",
+  "domains": {
+    "artifact_integrity": {
+      "controls": {
+        "AI-01": {
+          "status": "pass",
+          "findings": [
+            {
+              "id": "AI-01-0000",
+              "severity": "info",
+              "title": "Manifest valid",
+              "description": "manifest.json validates against MCPB schema",
+              "file": null,
+              "line": null,
+              "remediation": null
+            },
+            {
+              "id": "AI-01-0001",
+              "severity": "low",
+              "title": "MTF extension: permissions.network",
+              "description": "MTF schema: ['api.calendly.com'] is not one of ['none', 'outbound', 'inbound', 'full']",
+              "file": "manifest.json",
+              "line": null,
+              "remediation": null
+            }
+          ]
+        },
+        "AI-02": {
+          "status": "skip",
+          "findings": [],
+          "error": "AI-02 (Content Hashes) is reserved. Bundle integrity is verified via RG-07 (Bundle Digest) at the registry layer."
+        },
+        "AI-03": {
+          "status": "skip",
+          "findings": [],
+          "error": "Not yet implemented. Requires cosign or similar signature verification."
+        },
+        "AI-04": {
+          "status": "skip",
+          "findings": [],
+          "error": "Not yet implemented. Requires rebuild infrastructure and content comparison."
+        },
+        "AI-05": {
+          "status": "pass",
+          "findings": []
+        }
+      }
+    },
+    "supply_chain": {
+      "controls": {
+        "SC-01": {
+          "status": "error",
+          "findings": [],
+          "error": "syft not found. Install with: brew install syft"
+        },
+        "SC-02": {
+          "status": "error",
+          "findings": [],
+          "error": "grype not found. Install with: brew install grype"
+        },
+        "SC-03": {
+          "status": "pass",
+          "findings": [
+            {
+              "id": "SC-03-0000",
+              "severity": "info",
+              "title": "Lock file found: package-lock.json",
+              "description": "Dependencies are pinned via lock file",
+              "file": null,
+              "line": null,
+              "remediation": null
+            }
+          ]
+        },
+        "SC-04": {
+          "status": "pass",
+          "findings": [
+            {
+              "id": "SC-04-0000",
+              "severity": "info",
+              "title": "Lockfile found: package-lock.json",
+              "description": "Lockfile(s) present for client-side integrity verification",
+              "file": null,
+              "line": null,
+              "remediation": null
+            }
+          ]
+        },
+        "SC-05": {
+          "status": "skip",
+          "findings": [],
+          "error": "Not yet implemented. Requires SBOM/lockfile parsing to validate package sources."
+        }
+      }
+    },
+    "code_quality": {
+      "controls": {
+        "CQ-01": {
+          "status": "error",
+          "findings": [],
+          "error": "trufflehog not found. Install with: brew install trufflehog"
+        },
+        "CQ-02": {
+          "status": "pass",
+          "findings": []
+        },
+        "CQ-03": {
+          "status": "pass",
+          "findings": []
+        },
+        "CQ-04": {
+          "status": "skip",
+          "findings": [],
+          "error": "Not yet implemented. Requires AST analysis for validation library detection."
+        },
+        "CQ-05": {
+          "status": "pass",
+          "findings": [
+            {
+              "id": "CQ-05-0000",
+              "severity": "info",
+              "title": "No unsafe execution patterns detected",
+              "description": "Server code passed safe execution pattern analysis",
+              "file": null,
+              "line": null,
+              "remediation": null
+            }
+          ]
+        },
+        "CQ-06": {
+          "status": "skip",
+          "findings": [],
+          "error": "Not yet implemented. Requires runtime sandbox infrastructure with seccomp filtering."
+        }
+      }
+    },
+    "capability_declaration": {
+      "controls": {
+        "CD-01": {
+          "status": "pass",
+          "findings": []
+        },
+        "CD-02": {
+          "status": "error",
+          "findings": [],
+          "error": "unhashable type: 'list'"
+        },
+        "CD-03": {
+          "status": "pass",
+          "findings": [
+            {
+              "id": "CD-03-0000",
+              "severity": "info",
+              "title": "Tool descriptions are safe",
+              "description": "Checked 7 tool descriptions, no injection patterns found",
+              "file": null,
+              "line": null,
+              "remediation": null
+            }
+          ]
+        },
+        "CD-04": {
+          "status": "skip",
+          "findings": [],
+          "error": "Not yet implemented. Requires manifest.credentials scope validation."
+        },
+        "CD-05": {
+          "status": "pass",
+          "findings": [
+            {
+              "id": "CD-05-0001",
+              "severity": "info",
+              "title": "No credentials declared",
+              "description": "manifest.json does not declare any credentials requiring tokens",
+              "file": "manifest.json",
+              "line": null,
+              "remediation": null
+            }
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "controls": {
+        "PR-01": {
+          "status": "pass",
+          "findings": [
+            {
+              "id": "PR-01-0000",
+              "severity": "info",
+              "title": "Repository on github.com",
+              "description": "Source repository: https://github.com/NimbleBrainInc/mcp-calendly",
+              "file": null,
+              "line": null,
+              "remediation": null
+            }
+          ]
+        },
+        "PR-02": {
+          "status": "pass",
+          "findings": [
+            {
+              "id": "PR-02-0000",
+              "severity": "info",
+              "title": "Found 1 author(s)",
+              "description": "NimbleBrain Inc",
+              "file": null,
+              "line": null,
+              "remediation": null
+            },
+            {
+              "id": "PR-02-0001",
+              "severity": "info",
+              "title": "Organizational email: nimblebrain.ai",
+              "description": "Author NimbleBrain Inc uses organizational email",
+              "file": null,
+              "line": null,
+              "remediation": null
+            }
+          ]
+        },
+        "PR-03": {
+          "status": "skip",
+          "findings": [],
+          "error": "Not yet implemented. Requires SLSA provenance verification via slsa-verifier."
+        },
+        "PR-04": {
+          "status": "skip",
+          "findings": [],
+          "error": "Not yet implemented. Requires git clone and content verification."
+        },
+        "PR-05": {
+          "status": "skip",
+          "findings": [],
+          "error": "Not yet implemented. Requires scorecard CLI integration."
+        }
+      }
+    }
+  },
+  "findings": [
+    {
+      "id": "AI-01-0000",
+      "control": "AI-01",
+      "severity": "info",
+      "title": "Manifest valid",
+      "description": "manifest.json validates against MCPB schema",
+      "file": null,
+      "line": null,
+      "remediation": null
+    },
+    {
+      "id": "AI-01-0001",
+      "control": "AI-01",
+      "severity": "low",
+      "title": "MTF extension: permissions.network",
+      "description": "MTF schema: ['api.calendly.com'] is not one of ['none', 'outbound', 'inbound', 'full']",
+      "file": "manifest.json",
+      "line": null,
+      "remediation": null
+    },
+    {
+      "id": "SC-03-0000",
+      "control": "SC-03",
+      "severity": "info",
+      "title": "Lock file found: package-lock.json",
+      "description": "Dependencies are pinned via lock file",
+      "file": null,
+      "line": null,
+      "remediation": null
+    },
+    {
+      "id": "SC-04-0000",
+      "control": "SC-04",
+      "severity": "info",
+      "title": "Lockfile found: package-lock.json",
+      "description": "Lockfile(s) present for client-side integrity verification",
+      "file": null,
+      "line": null,
+      "remediation": null
+    },
+    {
+      "id": "CQ-05-0000",
+      "control": "CQ-05",
+      "severity": "info",
+      "title": "No unsafe execution patterns detected",
+      "description": "Server code passed safe execution pattern analysis",
+      "file": null,
+      "line": null,
+      "remediation": null
+    },
+    {
+      "id": "CD-03-0000",
+      "control": "CD-03",
+      "severity": "info",
+      "title": "Tool descriptions are safe",
+      "description": "Checked 7 tool descriptions, no injection patterns found",
+      "file": null,
+      "line": null,
+      "remediation": null
+    },
+    {
+      "id": "CD-05-0001",
+      "control": "CD-05",
+      "severity": "info",
+      "title": "No credentials declared",
+      "description": "manifest.json does not declare any credentials requiring tokens",
+      "file": "manifest.json",
+      "line": null,
+      "remediation": null
+    },
+    {
+      "id": "PR-01-0000",
+      "control": "PR-01",
+      "severity": "info",
+      "title": "Repository on github.com",
+      "description": "Source repository: https://github.com/NimbleBrainInc/mcp-calendly",
+      "file": null,
+      "line": null,
+      "remediation": null
+    },
+    {
+      "id": "PR-02-0000",
+      "control": "PR-02",
+      "severity": "info",
+      "title": "Found 1 author(s)",
+      "description": "NimbleBrain Inc",
+      "file": null,
+      "line": null,
+      "remediation": null
+    },
+    {
+      "id": "PR-02-0001",
+      "control": "PR-02",
+      "severity": "info",
+      "title": "Organizational email: nimblebrain.ai",
+      "description": "Author NimbleBrain Inc uses organizational email",
+      "file": null,
+      "line": null,
+      "remediation": null
+    }
+  ],
+  "sbom": {
+    "format": "cyclonedx",
+    "component_count": 0
+  }
+}
