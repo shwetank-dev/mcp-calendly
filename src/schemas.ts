@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+// Schemas for runtime validation of input from Agent to Server
+// Implicitly done by the SDK
+
 export const ListEventTypesSchema = z.object({
   count: z
     .number()

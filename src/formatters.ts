@@ -7,6 +7,10 @@ import type {
   PaginatedResponse,
 } from "./types.js";
 
+// These function strip down the Calendly API response to what MCP responds with
+// Why not using zod itself to strip down calendly API response while validating
+// them? The zod schemas are designed to match the Calendly Response
+
 export function formatUser(user: CalendlyUser) {
   return {
     name: user.name,
