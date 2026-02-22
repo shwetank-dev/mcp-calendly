@@ -1,7 +1,10 @@
 # MCPB bundle configuration
 BUNDLE_NAME = mcp-calendly
 
-.PHONY: help install build format format-check lint typecheck test clean run check all bump bundle
+# Single source of truth: src/constants.ts
+VERSION := $(shell sed -n 's/export const VERSION = "\(.*\)";/\1/p' src/constants.ts)
+
+.PHONY: help install build format format-check lint typecheck test clean run check all sync bump bundle
 
 help: ## Show this help message
 	@echo 'Usage: make [target]'
@@ -10,7 +13,7 @@ help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 install: ## Install dependencies
-	npm install
+	npm ci
 
 build: ## Build TypeScript
 	npm run build
@@ -40,15 +43,19 @@ check: format-check lint typecheck test ## Run all checks
 
 all: clean install build check ## Clean, install, build, and check
 
+sync: ## Sync VERSION from src/constants.ts → manifest.json, package.json, server.json
+	@echo "Syncing VERSION=$(VERSION)..."
+	@jq --arg v "$(VERSION)" '.version = $$v' manifest.json > manifest.tmp.json && mv manifest.tmp.json manifest.json
+	@jq --arg v "$(VERSION)" '.version = $$v' package.json > package.tmp.json && mv package.tmp.json package.json
+	@jq --arg v "$(VERSION)" '.version = $$v | .packages[0].version = $$v' server.json > server.tmp.json && mv server.tmp.json server.json
+	@echo "Done — VERSION=$(VERSION) synced to manifest.json, package.json, server.json"
+
 bump: ## Bump version (usage: make bump VERSION=0.2.0)
 ifndef VERSION
 	$(error VERSION is required. Usage: make bump VERSION=0.2.0)
 endif
-	@echo "Bumping version to $(VERSION)..."
-	@jq --arg v "$(VERSION)" '.version = $$v' manifest.json > manifest.tmp.json && mv manifest.tmp.json manifest.json
-	@jq --arg v "$(VERSION)" '.version = $$v' package.json > package.tmp.json && mv package.tmp.json package.json
-	@sed -i '' "s/export const VERSION = '.*'/export const VERSION = '$(VERSION)'/" src/constants.ts
-	@echo "Version bumped to $(VERSION) in all files."
+	@sed -i '' 's/export const VERSION = ".*"/export const VERSION = "$(VERSION)"/' src/constants.ts
+	@$(MAKE) --no-print-directory sync
 
 bundle: build ## Build MCPB bundle locally
 	npm prune --omit=dev

@@ -3,8 +3,8 @@ import { CalendlyApiError } from "./calendlyClient.js";
 
 /**
  * Parses the error response to be sent from MCP to Agent
- * @param e 
- * @returns 
+ * @param e
+ * @returns
  */
 export function errorResponse(e: unknown): CallToolResult {
   // TODO: Add case for ZodError

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 // Schemas for runtime validation of data from Calendly APIs to MCP Server
 // Explicitly checked in src/utils/calendlyClient.ts
@@ -45,7 +45,7 @@ export const CalendarEventSchema = z.object({
 export const ScheduledEventSchema = z.object({
   uri: z.string(),
   name: z.string(),
-  status: z.enum(['active', 'canceled']),
+  status: z.enum(["active", "canceled"]),
   start_time: z.string(),
   end_time: z.string(),
   event_type: z.string(),
@@ -67,7 +67,7 @@ export const InviteeSchema = z.object({
   uri: z.string(),
   email: z.string(),
   name: z.string(),
-  status: z.enum(['active', 'canceled']),
+  status: z.enum(["active", "canceled"]),
   timezone: z.string(),
   created_at: z.string(),
   updated_at: z.string(),
