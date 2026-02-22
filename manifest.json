@@ -22,7 +22,7 @@
   "compatibility": {
     "platforms": ["darwin", "linux", "win32"],
     "runtimes": {
-      "node": ">=22.0.0"
+      "node": ">=24.0.0"
     }
   },
   "user_config": {
