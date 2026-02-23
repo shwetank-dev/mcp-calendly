@@ -25,9 +25,7 @@ jobs:
         run: npm prune --omit=dev
 
       - name: Build bundle
-        run: |
-          pip install mcpb
-          mcpb pack
+        run: npx -y @anthropic-ai/mcpb pack
 
       - name: Run MTF scanner
         run: |

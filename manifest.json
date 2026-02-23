@@ -58,9 +58,11 @@
     "org.mpaktrust": {
       "mtf_version": "0.1",
       "permissions": {
-        "network": ["api.calendly.com"],
+        "network": "outbound",
         "filesystem": "none",
-        "subprocess": "none"
+        "subprocess": "none",
+        "environment": "read",
+        "native": "none"
       }
     }
   }

@@ -7,6 +7,30 @@ on:
     branches: [main]
 
 jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check version consistency
+        run: |
+          VERSION=$(sed -n 's/export const VERSION = "\(.*\)";/\1/p' src/constants.ts)
+          echo "Source of truth: $VERSION"
+
+          PKG=$(jq -r '.version' package.json)
+          MAN=$(jq -r '.version' manifest.json)
+          SRV=$(jq -r '.version' server.json)
+          SRV_PKG=$(jq -r '.packages[0].version' server.json)
+
+          FAIL=0
+          [ "$PKG" != "$VERSION" ]     && echo "MISMATCH: package.json=$PKG"             && FAIL=1
+          [ "$MAN" != "$VERSION" ]     && echo "MISMATCH: manifest.json=$MAN"             && FAIL=1
+          [ "$SRV" != "$VERSION" ]     && echo "MISMATCH: server.json (top)=$SRV"         && FAIL=1
+          [ "$SRV_PKG" != "$VERSION" ] && echo "MISMATCH: server.json packages[0]=$SRV_PKG" && FAIL=1
+
+          [ $FAIL -eq 0 ] && echo "OK: all versions match $VERSION"
+          exit $FAIL
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -52,7 +76,7 @@ jobs:
 
   bundle:
     runs-on: ubuntu-latest
-    needs: [lint, test]
+    needs: [version-check, lint, test]
     steps:
       - uses: actions/checkout@v6
 
@@ -70,6 +94,5 @@ jobs:
 
       - name: Test bundle creation
         run: |
-          pip install mcpb
-          mcpb pack
+          npx @anthropic-ai/mcpb pack
           ls -la *.mcpb
