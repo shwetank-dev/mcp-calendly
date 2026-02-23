@@ -1,8 +1,8 @@
 # MCPB bundle configuration
 BUNDLE_NAME = mcp-calendly
 
-# Single source of truth: src/constants.ts
-VERSION := $(shell sed -n 's/export const VERSION = "\(.*\)";/\1/p' src/constants.ts)
+# Single source of truth: manifest.json
+VERSION := $(shell jq -r '.version' manifest.json)
 
 .PHONY: help install build format format-check lint typecheck test clean run check all sync bump bundle
 
@@ -43,18 +43,18 @@ check: format-check lint typecheck test ## Run all checks
 
 all: clean install build check ## Clean, install, build, and check
 
-sync: ## Sync VERSION from src/constants.ts → manifest.json, package.json, server.json
+sync: ## Sync VERSION from manifest.json → package.json, server.json, src/constants.ts
 	@echo "Syncing VERSION=$(VERSION)..."
-	@jq --arg v "$(VERSION)" '.version = $$v' manifest.json > manifest.tmp.json && mv manifest.tmp.json manifest.json
 	@jq --arg v "$(VERSION)" '.version = $$v' package.json > package.tmp.json && mv package.tmp.json package.json
 	@jq --arg v "$(VERSION)" '.version = $$v | .packages[0].version = $$v' server.json > server.tmp.json && mv server.tmp.json server.json
-	@echo "Done — VERSION=$(VERSION) synced to manifest.json, package.json, server.json"
+	@sed -i '' 's/export const VERSION = ".*"/export const VERSION = "$(VERSION)"/' src/constants.ts
+	@echo "Done — VERSION=$(VERSION) synced to package.json, server.json, src/constants.ts"
 
 bump: ## Bump version (usage: make bump VERSION=0.2.0)
 ifndef VERSION
 	$(error VERSION is required. Usage: make bump VERSION=0.2.0)
 endif
-	@sed -i '' 's/export const VERSION = ".*"/export const VERSION = "$(VERSION)"/' src/constants.ts
+	@jq --arg v "$(VERSION)" '.version = $$v' manifest.json > manifest.tmp.json && mv manifest.tmp.json manifest.json
 	@$(MAKE) --no-print-directory sync
 
 bundle: build ## Build MCPB bundle locally

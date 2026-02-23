@@ -12,19 +12,19 @@ jobs:
 
       - name: Check version consistency
         run: |
-          VERSION=$(sed -n 's/export const VERSION = "\(.*\)";/\1/p' src/constants.ts)
-          echo "Source of truth: $VERSION"
+          VERSION=$(jq -r '.version' manifest.json)
+          echo "Source of truth: manifest.json=$VERSION"
 
           PKG=$(jq -r '.version' package.json)
-          MAN=$(jq -r '.version' manifest.json)
           SRV=$(jq -r '.version' server.json)
           SRV_PKG=$(jq -r '.packages[0].version' server.json)
+          CONSTANTS=$(sed -n 's/export const VERSION = "\(.*\)";/\1/p' src/constants.ts)
 
           FAIL=0
-          [ "$PKG" != "$VERSION" ]     && echo "MISMATCH: package.json=$PKG"             && FAIL=1
-          [ "$MAN" != "$VERSION" ]     && echo "MISMATCH: manifest.json=$MAN"             && FAIL=1
-          [ "$SRV" != "$VERSION" ]     && echo "MISMATCH: server.json (top)=$SRV"         && FAIL=1
-          [ "$SRV_PKG" != "$VERSION" ] && echo "MISMATCH: server.json packages[0]=$SRV_PKG" && FAIL=1
+          [ "$PKG" != "$VERSION" ]       && echo "MISMATCH: package.json=$PKG"               && FAIL=1
+          [ "$SRV" != "$VERSION" ]       && echo "MISMATCH: server.json (top)=$SRV"           && FAIL=1
+          [ "$SRV_PKG" != "$VERSION" ]   && echo "MISMATCH: server.json packages[0]=$SRV_PKG" && FAIL=1
+          [ "$CONSTANTS" != "$VERSION" ] && echo "MISMATCH: src/constants.ts=$CONSTANTS"      && FAIL=1
 
           [ $FAIL -eq 0 ] && echo "OK: all versions match $VERSION"
           exit $FAIL
