@@ -59,7 +59,7 @@ endif
 
 bundle: build ## Build MCPB bundle locally
 	npm prune --omit=dev
-	./scripts/build-bundle.sh
+	npx -y @anthropic-ai/mcpb pack
 	npm install
 
 # Shortcuts
