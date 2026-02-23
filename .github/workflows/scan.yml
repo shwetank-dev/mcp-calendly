@@ -34,8 +34,11 @@ jobs:
 
       - name: Run MTF scanner
         run: |
-          pip install mpak-scanner
-          mpak-scanner scan *.mcpb --json | tail -n +2 > scan-results.json
+          docker run --rm \
+            -v ${{ github.workspace }}:/workspace \
+            -w /workspace \
+            ghcr.io/nimblebraininc/mpak-scanner:latest \
+            scan *.mcpb --json | tail -n +2 > scan-results.json
           cat scan-results.json
 
       - name: Check for critical/high findings
