@@ -20,4 +20,5 @@ CLAUDE.md
 README.md
 tmp.ts
 *.png
+*.security-report.json
 !package-lock.json
