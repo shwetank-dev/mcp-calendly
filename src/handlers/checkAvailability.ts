@@ -1,9 +1,9 @@
 import type { z } from "zod";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import type { CheckAvailabilitySchema } from "../schemas.js";
+import type { CheckAvailabilitySchema } from "../utils/schemas.js";
 import { CalendlyClient } from "../utils/calendlyClient.js";
 import { errorResponse } from "../utils/errorResponse.js";
-import { formatAvailableTime } from "../formatters.js";
+import { formatAvailableTime } from "../utils/formatters.js";
 
 export async function checkAvailability(
   client: CalendlyClient,

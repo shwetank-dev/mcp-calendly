@@ -5,7 +5,7 @@ import {
   InviteeSchema,
   AvailableTimeSchema,
   paginatedSchema,
-} from "../types.js";
+} from "./types.js";
 import type {
   AvailableTime,
   CalendlyUser,
@@ -13,7 +13,7 @@ import type {
   Invitee,
   PaginatedResponse,
   ScheduledEvent,
-} from "../types.js";
+} from "./types.js";
 
 const BASE_URL = "https://api.calendly.com";
 

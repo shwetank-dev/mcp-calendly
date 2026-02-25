@@ -11,7 +11,7 @@ import {
   ListInviteesSchema,
   CancelEventSchema,
   CheckAvailabilitySchema,
-} from "../src/schemas.js";
+} from "../src/utils/schemas.js";
 import { getCurrentUser } from "../src/handlers/getCurrentUser.js";
 import { listEventTypes } from "../src/handlers/listEventTypes.js";
 import { listScheduledEvents } from "../src/handlers/listScheduledEvents.js";

@@ -1,6 +1,6 @@
 import type { z } from "zod";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import type { CancelEventSchema } from "../schemas.js";
+import type { CancelEventSchema } from "../utils/schemas.js";
 import { CalendlyClient } from "../utils/calendlyClient.js";
 import { errorResponse } from "../utils/errorResponse.js";
 

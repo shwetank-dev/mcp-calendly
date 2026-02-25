@@ -5,7 +5,7 @@ import type {
   Invitee,
   AvailableTime,
   PaginatedResponse,
-} from "../src/types.js";
+} from "../src/utils/types.js";
 
 export const mockUser: CalendlyUser = {
   uri: "https://api.calendly.com/users/USER123",

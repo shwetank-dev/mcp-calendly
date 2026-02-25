@@ -1,7 +1,7 @@
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import { CalendlyClient } from "../utils/calendlyClient.js";
 import { errorResponse } from "../utils/errorResponse.js";
-import { formatUser } from "../formatters.js";
+import { formatUser } from "../utils/formatters.js";
 
 export async function getCurrentUser(
   client: CalendlyClient,

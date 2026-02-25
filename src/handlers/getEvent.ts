@@ -1,9 +1,9 @@
 import type { z } from "zod";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import type { GetEventSchema } from "../schemas.js";
+import type { GetEventSchema } from "../utils/schemas.js";
 import { CalendlyClient } from "../utils/calendlyClient.js";
 import { errorResponse } from "../utils/errorResponse.js";
-import { formatScheduledEvent } from "../formatters.js";
+import { formatScheduledEvent } from "../utils/formatters.js";
 
 export async function getEvent(
   client: CalendlyClient,
