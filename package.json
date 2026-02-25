@@ -8,6 +8,7 @@
     "build": "tsc",
     "start": "node build/index.js --stdio",
     "dev": "tsx src/index.ts --stdio",
+    "dev:http": "tsx src/server.ts",
     "lint": "eslint src/ tests/",
     "format": "prettier --write src/ tests/",
     "format:check": "prettier --check src/ tests/",
@@ -19,9 +20,11 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.26.0",
     "eslint": "9.39.3",
+    "express": "5.2.1",
     "zod": "4.3.6"
   },
   "devDependencies": {
+    "@types/express": "5.0.6",
     "@types/node": "25.2.3",
     "prettier": "3.8.1",
     "tsx": "4.21.0",
