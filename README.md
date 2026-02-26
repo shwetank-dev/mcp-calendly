@@ -1,5 +1,9 @@
 # Calendly MCP Server
 
+[![mpak](https://img.shields.io/badge/mpak-registry-blue)](https://mpak.dev/packages/@nimblebraininc/calendly?utm_source=github&utm_medium=readme&utm_campaign=mcp-calendly)
+[![NimbleBrain](https://img.shields.io/badge/NimbleBrain-nimblebrain.ai-purple)](https://nimblebrain.ai?utm_source=github&utm_medium=readme&utm_campaign=mcp-calendly)
+[![Discord](https://img.shields.io/badge/Discord-community-5865F2)](https://nimblebrain.ai/discord?utm_source=github&utm_medium=readme&utm_campaign=mcp-calendly)
+
 A [NimbleBrain](https://nimblebrain.ai) MCP server for [Calendly](https://calendly.com). Connect Claude to your Calendly account to browse event types, view and filter scheduled meetings, inspect invitee details, check availability windows, and cancel events — all without leaving your AI workflow.
 
 ## Installation
