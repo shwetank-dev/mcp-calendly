@@ -18,13 +18,13 @@ install: ## Install dependencies
 build: ## Build TypeScript
 	npm run build
 
-format: ## Format code with prettier
+format: ## Format code with biome
 	npm run format
 
 format-check: ## Check code formatting
 	npm run format:check
 
-lint: ## Lint code with eslint
+lint: ## Lint code with biome
 	npm run lint
 
 typecheck: ## Type check with tsc

@@ -1,9 +1,9 @@
-import type { z } from "zod";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import type { ListInviteesSchema } from "../utils/schemas.js";
-import { CalendlyClient } from "../utils/calendlyClient.js";
+import type { z } from "zod";
+import type { CalendlyClient } from "../utils/calendlyClient.js";
 import { errorResponse } from "../utils/errorResponse.js";
-import { formatPaginated, formatInvitee } from "../utils/formatters.js";
+import { formatInvitee, formatPaginated } from "../utils/formatters.js";
+import type { ListInviteesSchema } from "../utils/schemas.js";
 
 export async function listInvitees(
   client: CalendlyClient,

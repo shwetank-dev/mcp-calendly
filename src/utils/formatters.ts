@@ -1,10 +1,10 @@
 import type {
+  AvailableTime,
   CalendlyUser,
   EventType,
-  ScheduledEvent,
   Invitee,
-  AvailableTime,
   PaginatedResponse,
+  ScheduledEvent,
 } from "./types.js";
 
 // These function strip down the Calendly API response to what MCP responds with

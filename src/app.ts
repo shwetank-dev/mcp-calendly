@@ -1,21 +1,21 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { VERSION, SERVER_NAME } from "./constants.js";
-import { CalendlyClient } from "./utils/calendlyClient.js";
-import {
-  ListEventTypesSchema,
-  ListScheduledEventsSchema,
-  GetEventSchema,
-  ListInviteesSchema,
-  CancelEventSchema,
-  CheckAvailabilitySchema,
-} from "./utils/schemas.js";
-import { getCurrentUser } from "./handlers/getCurrentUser.js";
-import { listEventTypes } from "./handlers/listEventTypes.js";
-import { listScheduledEvents } from "./handlers/listScheduledEvents.js";
-import { getEvent } from "./handlers/getEvent.js";
-import { listInvitees } from "./handlers/listInvitees.js";
+import { SERVER_NAME, VERSION } from "./constants.js";
 import { cancelEvent } from "./handlers/cancelEvent.js";
 import { checkAvailability } from "./handlers/checkAvailability.js";
+import { getCurrentUser } from "./handlers/getCurrentUser.js";
+import { getEvent } from "./handlers/getEvent.js";
+import { listEventTypes } from "./handlers/listEventTypes.js";
+import { listInvitees } from "./handlers/listInvitees.js";
+import { listScheduledEvents } from "./handlers/listScheduledEvents.js";
+import { CalendlyClient } from "./utils/calendlyClient.js";
+import {
+  CancelEventSchema,
+  CheckAvailabilitySchema,
+  GetEventSchema,
+  ListEventTypesSchema,
+  ListInviteesSchema,
+  ListScheduledEventsSchema,
+} from "./utils/schemas.js";
 
 export function createServer(apiKey: string): McpServer {
   const client = new CalendlyClient(apiKey);

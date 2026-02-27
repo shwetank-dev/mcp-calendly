@@ -43,11 +43,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Format check
+      - name: Biome check (lint + format)
         run: npm run format:check
-
-      - name: Lint
-        run: npm run lint
 
       - name: Type check
         run: npm run typecheck

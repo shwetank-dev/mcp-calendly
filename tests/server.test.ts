@@ -1,30 +1,30 @@
-import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import type { CalendlyClient } from "../src/utils/calendlyClient.js";
-import {
-  ListEventTypesSchema,
-  ListScheduledEventsSchema,
-  GetEventSchema,
-  ListInviteesSchema,
-  CancelEventSchema,
-  CheckAvailabilitySchema,
-} from "../src/utils/schemas.js";
-import { getCurrentUser } from "../src/handlers/getCurrentUser.js";
-import { listEventTypes } from "../src/handlers/listEventTypes.js";
-import { listScheduledEvents } from "../src/handlers/listScheduledEvents.js";
-import { getEvent } from "../src/handlers/getEvent.js";
-import { listInvitees } from "../src/handlers/listInvitees.js";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { cancelEvent } from "../src/handlers/cancelEvent.js";
 import { checkAvailability } from "../src/handlers/checkAvailability.js";
+import { getCurrentUser } from "../src/handlers/getCurrentUser.js";
+import { getEvent } from "../src/handlers/getEvent.js";
+import { listEventTypes } from "../src/handlers/listEventTypes.js";
+import { listInvitees } from "../src/handlers/listInvitees.js";
+import { listScheduledEvents } from "../src/handlers/listScheduledEvents.js";
+import type { CalendlyClient } from "../src/utils/calendlyClient.js";
 import {
-  mockUser,
-  mockEventType,
-  mockScheduledEvent,
-  mockInvitee,
+  CancelEventSchema,
+  CheckAvailabilitySchema,
+  GetEventSchema,
+  ListEventTypesSchema,
+  ListInviteesSchema,
+  ListScheduledEventsSchema,
+} from "../src/utils/schemas.js";
+import {
   mockAvailableTime,
+  mockEventType,
+  mockInvitee,
+  mockScheduledEvent,
+  mockUser,
   paginatedResponse,
 } from "./fixtures.js";
 

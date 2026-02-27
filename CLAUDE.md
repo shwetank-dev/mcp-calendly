@@ -59,8 +59,9 @@ API key configured via manifest `user_config`, not hardcoded:
 npm run build        # Compile TypeScript
 npm run dev          # Run with tsx (dev)
 npm run test         # Test
-npm run lint         # Lint
-npm run format       # Format
+npm run lint         # Lint (biome)
+npm run format       # Format (biome)
+npm run format:check # Lint + format check (biome)
 npm run typecheck    # Type check
 make check           # All checks
 ```

@@ -1,10 +1,10 @@
 import type {
+  AvailableTime,
   CalendlyUser,
   EventType,
-  ScheduledEvent,
   Invitee,
-  AvailableTime,
   PaginatedResponse,
+  ScheduledEvent,
 } from "../src/utils/types.js";
 
 export const mockUser: CalendlyUser = {
